@@ -33,6 +33,19 @@ function createBoard(){
 
 function handleGame(e){
     const currentCell = e.currentTarget;
+    const currentTurn = isTurnX ? players.x : players.o;
+    
+    turn++;
+    drawShape(currentCell, currentTurn)
 
-    console.log(currentCell)
+    changeTurn();
+}
+
+function drawShape(element, newClass){
+    element.classList.add(newClass);
+}
+
+function changeTurn(){
+    isTurnX = !isTurnX;
+    messageTurn.textContent = isTurnX ? 'X' : 'O';
 }
