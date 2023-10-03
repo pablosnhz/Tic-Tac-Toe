@@ -13,15 +13,26 @@ let players = {
 }
 
 messageTurn.textContent = isTurnX ? 'X' : 'O';
-createBoard()
+createBoard();
 
 function createBoard(){
     const cells = 9;
 
+    while(gameBoard.firstElementChild){
+        gameBoard.firstElementChild.remove();
+    }
+
     for(let i = 0; i < cells; i++) {
         const div = document.createElement('div');
         div.classList.add('cell');
+        div.addEventListener('click', handleGame, {once:true});
 
         gameBoard.append(div);
     }
+}
+
+function handleGame(e){
+    const currentCell = e.currentTarget;
+
+    console.log(currentCell)
 }
